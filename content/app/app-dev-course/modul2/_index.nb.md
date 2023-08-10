@@ -9,7 +9,7 @@ weight: 20
 
 I denne modulen skal du videreutvikle applikasjonen du laget i [modul 1](../modul1) med blant annet en ny side, dynamisk skjuling av sider, sporvalg og forhåndsutfylling.
 
-Deler av modul 2 kan gjøres i Altinn Studio Designer, men noe må utføres med [lokal utvikling](/nb/app/getting-started/local-dev).
+Deler av modul 2 kan gjøres i [Altinn Studio Designer](/nb/app/getting-started/ui-editor/) (Designer), men noe må utføres med [lokal utvikling](/nb/app/getting-started/local-dev).
 
 **Temaer som dekkes i denne modulen:**
 
@@ -65,9 +65,10 @@ Bilde av Sogndals kommunevåpen som kan benyttes i applikasjonen:
 - [Administrere rekkefølge på flere sider](/nb/app/development/ux/pages/navigation/#rekkefølge)
 
 ### Forståelsessjekk
-(Klikk på spørsmålet for å se løsningen.)
 
 {{% expandbold "Hvilken fil i applikasjonsrepoet må redigeres dersom du manuelt ønsker å endre siderekkefølgen på eksisterende sider?" %}}
+<br>
+
 I `App/ui/Settings.json` ligger siderekkefølgen beskrevet.
 For å justere på siderekkefølgen, må listen beskrevet under `pages.order` endres til å representere ønsket siderekkefølge.  
 Se [Administrere rekkefølge på flere sider](/nb/app/development/ux/pages/navigation/#rekkefølge).
@@ -76,6 +77,8 @@ Se [Administrere rekkefølge på flere sider](/nb/app/development/ux/pages/navig
 <br>
 
 {{% expandbold "Hvis du ønsker å gi en side et annet navn, men ikke har Altinn Studio tilgjengelig, hvilke filer må oppdateres med det nye filnavnet?" %}}
+<br>
+
 - `App/ui/layouts/<page>.json`: endre filnavnet (`<page>`) på siden som skal bytte navn.
 - `App/ui/Settings.json`: endre navnet på siden under `pages.order`.
 {{% /expandbold %}}
@@ -83,6 +86,8 @@ Se [Administrere rekkefølge på flere sider](/nb/app/development/ux/pages/navig
 <br>
 
 {{% expandbold "Hvordan oppnår du at teksten bryter dersom tekststrengen ikke er lang nok til å naturlig brytes?" %}}
+<br>
+
 Alle tekstressurser støtter markdown og dermed html-notasjon, så ved å benytte `<br>` vil man kunne tvinge tekstbrytning.
 {{% /expandbold %}}
 
@@ -99,7 +104,9 @@ I denne oppgaven skal du sette opp sporvalg i applikasjonen basert på kravene f
 
 En bruker som ikke oppfyller kravene for skjemaet skal stoppes så tidlig som mulig i arbeidsflyten.
  På infosiden er det ønskelig at brukeren skal oppgi om skjemaet gjelder dem eller ikke.
- Hvordan dette gjøres er fritt fram. Feltet  `Innflytter.KanBrukeSkjema` i datamodellen er mulig å benytte til dette formålet.
+
+Hvordan svaret innhentes er valgfritt. Merk at en komponent må knyttes til et felt i datamodellen for å kunne lagre verdier.
+  Feltet `Innflytter.KanBrukeSkjema` i datamodellen kan benyttes til dette formålet.
 
 Basert på svaret skal brukeren sendes videre til ett av følgende spor:
 
@@ -133,9 +140,10 @@ https://www.sogndal.kommune.no/
 - [Formatering av tekst](/nb/app/development/ux/texts/#formatering-av-tekster)
 
 ### Forståelsessjekk
-(Klikk på spørsmålet for å se løsning.)
 
 {{% expandbold "Dersom man har sporvalg på et senere tidspunkt i en arbeidsflyt og en sluttbruker endrer et valg, hva skjer med skjemadataen man tidligere har fylt ut, dersom siden skjules for sluttbrukeren?" %}}
+<br>
+
 Dersom du har denne typen logikk i en applikasjon der man kan fortsette til innsending for flere spor, bør dataen på siden(e) som nå blir skjult for bruker nullstilles.
 {{% /expandbold %}}
 
@@ -169,6 +177,7 @@ I denne oppgaven flyttes fokus tilbake til den første datainnsamlingssiden, og 
 3. Opprett [egendefinert forhåndsutfylling](/nb/app/development/data/prefill/custom) for alder basert på personnummer. Husk at alder ikke skal kunne endres av bruker.
 
 {{% expandbold "Kodehjelp: Beregning av alder fra personnummer" %}}
+<br>
 
 Denne funksjonen kan brukes til å beregne alder fra personnummeret.
 ```cs
@@ -248,15 +257,18 @@ private static int CalculateAge(string sosialSecNumber)
 
 
 ### Forståelsessjekk
-(Klikk på spørsmålet for å se løsningen.)
 
 {{% expandbold "Er det mulig å endre en forhåndsutfylt verdi når den først er satt?" %}}
+<br>
+
 Ja. Dersom man ikke gjør noen endringer vil en standardkomponent med forhåndsutfylt data være redigerbar.
 {{% /expandbold %}}
 
 <br>
 
 {{% expandbold "Hvordan kan man hindre at en forhåndsutfylt verdi endres av sluttbrukeren?" %}}
+<br>
+
 Komponenten kan settes til `readOnly` på én av to måter:
 
 1\. I Altinn Studio Designer ved å huke av ved "Det skal ikke være mulig å svare (read only)" for den aktuelle komponenten:
@@ -292,6 +304,7 @@ Alternativt kan man kjøre valideringer av dataen på serversiden for å verifis
 <br>
 
 {{% expandbold "Ikke alle norske innbyggere har et fødselsnummer, noen får tildelt et D-nummer. Hvordan må koden din justeres for å ta hensyn til dette dersom alder skal baseres på et fødselsnummer eller D-nummer som sluttbruker selv taster inn?" %}}
+<br>
 
 {{% notice info %}}
 Et [D-nummer](https://jusleksikon.no/wiki/F%C3%B8dselsnummer#D-nummer) er ellevesifret, som ordinære fødselsnummer, og består av en modifisert sekssifret fødselsdato og et femsifret personnummer. Fødselsdatoen modifiseres ved at _det legges til 4 på det første sifferet_: En person født 1. januar 1980 får dermed fødselsdato 410180, mens en som er født 31. januar 1980 får 710180.
@@ -328,7 +341,6 @@ public static string GetDOB(string fOrDNumber){
 {{% /expandlarge %}}
 
 ## Oppsummering
-
 I denne modulen har du utvidet applikasjonen din med mer funksjonalitet i form av å
 legge til flere sider, sette opp sporvalg for å styre brukerflyten og sette opp forhåndsutfylling av skjemafelter
 både med tilgjengelige datakilder i Altinn og egendefinert kode.
@@ -338,25 +350,394 @@ bekrefte at riktige felter blir forhåndsutfylt.
 
 <br>
 
-{{% expandlarge id="solution" header="Løsningsforslag" %}}
+{{<expandlarge id="solution" header="Løsningsforslag">}}
 
-Kildekode: [modul 2](https://altinn.studio/repos/testdep/flyttemelding-sogndal/src/branch/modul2)  
-(Kildekode [tidligere versjon modul 2](https://altinn.studio/repos/ttd/tilflytter-sogndal-lf/src/branch/bolk/2))
+{{% markdown %}}
+[Kildekode modul 2](https://altinn.studio/repos/testdep/flyttemelding-sogndal/src/branch/modul2)<br>
+[(Kildekode tidligere versjon modul 2)](https://altinn.studio/repos/ttd/tilflytter-sogndal-lf/src/branch/bolk/2)<br>
+{{% /markdown %}}
 
-{{% expandbold "Legge til infoside" %}}
+<h3>Legge til infoside</h3>
 
-![Skjermbilde av infoside. Bilde](infoside-screenshot.png "Skjermbilde av infoside")
+{{<content-version-selector classes="thin-border">}}
+{{<content-version-container version-label="Kode">}}
+
+<br>
+
+#### Infoside oppsett
+
+Bildet det refereres til er lastet ned og lagret i mappen`/App/wwwroot` i appen (mappen `wwwroot` ble også opprettet).
+ Et alternativ er å bruke en ekstern URL for bildet som kilde.
+
+Sidestilling av bilde og overskrift er gjort ved hjelp av `grid` (se markeringer).
+
+```json{linenos=false,hl_lines=["17-19", "30-32"]}
+// File: /App/ui/layouts/info.json
+
+{
+  "$schema": "https://altinncdn.no/schemas/json/layout/layout.schema.v1.json",
+  "data": {
+    "layout": [
+      {
+        "id": "kommune-logo",
+        "type": "Image",
+        "image": {
+          "src": {
+            "nb": "wwwroot/kommune-logo.png"
+          },
+          "width": "100%",
+          "align": "center"
+        },
+        "grid": {
+          "xs": 2
+        },
+        "textResourceBindings": {
+          "altTextImg": "kommune-logo.altTextImg"
+        }
+      },
+      {
+        "id": "overskrift",
+        "type": "Paragraph",
+        "textResourceBindings": {
+          "title": "info.overskrift.title"
+        },
+        "grid": {
+          "xs": 7
+        }
+      },
+      {
+        "id": "beskrivelse",
+        "type": "Paragraph",
+        "textResourceBindings": {
+          "title": "info.beskrivelse.title"
+        }
+      },
+      {
+        "id": "NavigationButtons-hateTR",
+        "type": "NavigationButtons",
+        "componentType": "NavigationButtons",
+        "dataModelBindings": {},
+        "showBackButton": true,
+        "textResourceBindings": {
+          "next": "navigation.next",
+          "back": "navigation.back"
+        }
+      }
+    ]
+  }
+}
+```
+
+#### Tekstressurser (nb)
+```json
+// File: /App/config/texts/resource.nb.json
+
+{
+  "language": "nb",
+  "resources": [
+    ...
+    {
+      "id": "info.overskrift.title",
+      "value": "# Skjema for informasjonsinnsamling for fremtidige tilflyttere"
+    },
+    {
+      "id": "info.beskrivelse.title",
+      "value": "<br>Opplysningene du oppgir i dette skjemaet vil benyttes til å skreddersy en pakke med kommunale tilbud til deg og de du eventuelt flytter til kommunen sammen med.\n<br><br>\nDu skal ikke bruke dette skjemaet hvis:\n* Du er allerede bosatt i Sogndal kommune\n* Du bor i en annen kommune og har ingen planer om å flytte\n* Du skal flytte til Sogndal, men **ikke** i løpet av de neste 12 månedene."
+    },
+    {
+      "id": "kommune-logo.altTextImg",
+      "value": "Sogndal kommunevåpen. Bilde"
+    }
+  ]
+}
+```
+{{</content-version-container>}}
+{{<content-version-container version-label="Altinn Studio Designer">}}
+
+<br>
+
+#### Komponenter
+
+{{% notice info %}}
+Se *Kode* for sidestilling av komponenter.
+{{% /notice %}}
+
+![Komponenter på info-side. Bilde](screenshot-info-page-layout-1.png "Komponenter på info-side")
+
+#### Bilde
+
+Bildet det refereres til er lastet ned og lagret i mappen`/App/wwwroot` i appen (mappen `wwwroot` ble også opprettet).
+ Et alternativ er å bruke en ekstern URL for bildet som kilde.
+
+{{% expandbold "Legg til mappe wwwroot og last opp bilde i Designer" %}}
+<br>
+
+Naviger til repository (klikk logo øverst i høyre hjørne eller tre prikker til høyre på menylinjen) og velg "Last opp fil" fra menyen "Add file".
+
+![Repository legg til fil. Bilde](screenshot-repository-add-file.png "Repository")
+
+I feltet "Legg til mappe" fyller du inn `/App/wwwroot`.
+ Last opp bildet og legg til en beskrivende commit-melding.
+  Klikk "Commit endringer" for å lagre.
+
+
+![Legg til fil. Bilde](screenshot-add-file.png "Legg til fil")
+
+![Eksempel utfylt legg til fil. Bilde](screenshot-add-file-filled.png "Utsnitt utfylt skjema")
+
 {{% /expandbold %}}
 
-{{% expandbold "Alternativ arbeidsflyt" %}}
-![Skjermbilde av alternativ arbeidsflyt: dette skjemaet er ikke for deg](/app/app-dev-course/modul2/side-ikke-for-deg-screenshot.png "Skjermbilde av alternativ arbeidsflyt: dette skjemaet er ikke for deg")
-{{% /expandbold %}}
+![Innstillinger for bilde. Skjermbilde](screenshot-image-settings-wwwroot.png "Innstillinger for bilde")
 
-{{% expandbold "Forhåndsutfylling" %}}
-![Skjermbilde av forhåndsutfylt dataside](/app/app-dev-course/modul2/prefilled-data-screenshot.png "Skjermbilde av forhåndsutfylt dataside")
-{{% /expandbold %}}
 
-{{% /expandlarge %}}
+#### Overskrift
+
+Overskriften er lagt til som "Tekst" > "Paragraf" og formatert med markdown.
+
+![Innstillinger for overskrift](screenshot-heading-settings.png "Innstillinger for overskrift")
+
+#### Beskrivelse
+
+Beskrivelsen er lagt til som "Tekst" > "Paragraf" og formatert med markdown.
+
+![Innstillinger for beskrivelse. Bilde](screenshot-description-settings.png "Innstillinger for beskrivelse")
+
+{{</content-version-container>}}
+{{<content-version-container version-label="Resultat">}}
+
+![Skjermbilde av infoside. Bilde](screenshot-info-page-1.png "Infoside")
+
+![]()
+{{</content-version-container>}}
+{{</content-version-selector>}}
+
+{{% gray-divider-line %}}
+
+<h3>Alternativ arbeidsflyt</h3>
+{{<content-version-selector classes="thin-border">}}
+{{<content-version-container version-label="Kode">}}
+
+<br>
+
+#### Radioknapper
+
+Det er lagt til en komponent for radioknapper som er koblet til feltet `Innflytter.KanBrukeSkjema` i datamodellen.
+ Merk at verdiene for `options` må korrespondere med tillatte verdier for dette feltet.
+
+(Deler av koden er utelatt.)
+```json{linenos=false,hl_lines=["8-29"]}
+// File: /App/ui/layouts/info.json
+
+{
+  "$schema": "https://altinncdn.no/schemas/json/layout/layout.schema.v1.json",
+  "data": {
+    "layout": [
+      ...
+      {
+        "id": "bekreftelse",
+        "type": "RadioButtons",
+        "required": true,
+        "textResourceBindings": {
+          "title": "info.bekreft"
+        },
+        "dataModelBindings": {
+          "simpleBinding": "Innflytter.KanBrukeSkjema"
+        },
+        "options": [
+          {
+            "label": "info.ja",
+            "value": "true"
+          },
+          {
+            "label": "info.nei",
+            "value": "false"
+          }
+        ],
+        "preselectedOptionIndex": 1
+      },
+      ...
+    ]
+  }
+}
+```
+
+#### Ny side 'Ikke for deg' og logikk ved veivalg
+
+Det er lagt til en ny side som skal vises dersom brukeren ikke oppfyller kravene for å bruke tjenesten.
+Logikk for å skjule siden er lagt til ved hjelp av egenskapen `hidden` (se markering i koden).
+ Når det krysses av for at man oppfyller kravene for å bruke tjenesten.Siden blir skjult når verdien til komponenten med id `bekreftelse` (som er radioknapper) er lik `true`, altså 
+
+```json{linenos=false,hl_lines="6-13"}
+// File: /App/ui/layouts/ikke-for-deg.json
+
+{
+  "$schema": "https://altinncdn.no/schemas/json/layout/layout.schema.v1.json",
+  "data": {
+    "hidden": [
+      "equals",
+      [
+        "component",
+        "bekreftelse"
+      ],
+      true
+    ],
+    "layout": [
+      {
+        "id": "ikke-for-deg",
+        "type": "Paragraph",
+        "textResourceBindings": {
+          "title": "ikke-for-deg.info"
+        }
+      },
+      {
+        "id": "NavigationButtons-azt7sj",
+        "type": "NavigationButtons",
+        "componentType": "NavigationButtons",
+        "dataModelBindings": {},
+        "showBackButton": true,
+        "textResourceBindings": {
+          "back": "navigation.back"
+        }
+      }
+    ]
+  }
+}
+```
+
+Tilsvarende logikk er lagt til for skjemasiden.
+ Denne siden vil skjules dersom verdien til `bekreftelse`-komponenten er satt til `false`, altså når det krysses av for at man *ikke* oppfyller kravene for tjenesten.
+
+```json{linenos=false,hl_lines=["6-13"]}
+// File: /App/ui/layouts/innflytterPersonalia.json
+
+{
+  "$schema": "https://altinncdn.no/schemas/json/layout/layout.schema.v1.json",
+  "data": {
+    "hidden": [
+      "equals",
+      [
+        "component",
+        "bekreftelse"
+      ],
+      false
+    ],
+    "layout": [
+      ...
+```
+
+#### Ekskludere side fra pdf
+
+Siden 'Ikke for deg' ønsker vi ikke å inkludere dersom det skal genereres en pdf-fil.
+ Dette kan stilles inn med egenskapen `excludeFromPdf` i `Settings.json`.
+
+```json{linenos=false,hl_lines="10"}
+// File: /App/Settings.json
+
+{
+  "$schema": "https://altinncdn.no/schemas/json/layout/layoutSettings.schema.v1.json",
+  "pages": {
+    "order": [
+      "info",
+      "innflytterPersonalia",
+      "ikke-for-deg"
+    ],
+    "excludeFromPdf": ["ikke-for-deg"]
+  }
+}
+```
+
+#### Tekstressurser (nb)
+
+Nye tekstressurser som er lagt til.
+
+(Deler av koden er utelatt.)
+```json{linenos=false,hl_lines=["7-22"]}
+// File: /App/config/texts/resource.nb.json
+
+{
+  "language": "nb",
+  "resources": [
+    ...
+    {
+      "id": "info.bekreft",
+      "value": "**Jeg møter kriteriene for å bruke appen.**"
+    },
+    {
+      "id": "info.ja",
+      "value": "Ja"
+    },
+    {
+      "id": "info.nei",
+      "value": "Nei"
+    },
+    {
+      "id": "ikke-for-deg.info",
+      "value": "### Dette skjemaet er ikke for deg.<br><br>\n[Se en oversikt over tilbud i kommunen her](https://www.sogndal.kommune.no)."
+    }
+  ]
+}
+```
+
+{{</content-version-container>}}
+{{<content-version-container version-label="Altinn Studio Designer">}}
+
+<br>
+
+{{% notice info %}}
+Se *Kode* for logikk ved veivalg.
+{{% /notice %}}
+
+#### Radioknapper info-side
+
+Det er lagt til en komponent for radioknapper på info-siden hvor brukeren skal angi om de oppfyller kravene for å bruke skjemaet.
+ Alternativt kan man bruke en avkrysningsboks eller nedrekksfelt.
+
+![Komponenter på info-side. Bilde](screenshot-info-page-layout-2.png "Komponenter på info-siden")
+
+
+
+![Radioknapper innstillinger. Bilde](screenshot-radio-buttons-settings.png "Innstillinger for radioknapper")
+
+![]()
+
+#### Ikke-for-deg-side
+
+Ny side for *Spor 1*.
+
+![Komponenter på siden ikke-for-deg. Bilde](screenshot-ikke-for-deg-layout.png "Komponenter på siden Ikke for deg")
+
+![Tekst innstillinger. Bilde](screenshot-ikke-for-deg-tekst.png "Innstillinger for tekst")
+
+{{</content-version-container>}}
+{{<content-version-container version-label="Resultat">}}
+
+![Skjermbilde av oppdatert infoside. Bilde](infoside-screenshot.png "Oppdatert infoside")
+
+![Skjermbilde av alternativ arbeidsflyt: dette skjemaet er ikke for deg](side-ikke-for-deg-screenshot.png "Ny side: Dette skjemaet er ikke for deg")
+
+
+{{</content-version-container>}}
+{{</content-version-selector>}}
+
+{{% gray-divider-line %}}
+
+<h3>Forhåndsutfylling</h3>
+{{<content-version-selector classes="thin-border">}}
+{{<content-version-container version-label="Kode">}}
+
+{{</content-version-container>}}
+{{<content-version-container version-label="Altinn Studio Designer">}}
+{{</content-version-container>}}
+{{<content-version-container version-label="Resultat">}}
+
+![Skjermbilde av forhåndsutfylt dataside](/app/app-dev-course/modul2/prefilled-data-screenshot.png "Oppdatert dataside med forhåndsutfylling")
+
+![]()
+
+{{</content-version-container>}}
+{{</content-version-selector>}}
+
+{{</expandlarge>}}
 
 <br><br>
 
