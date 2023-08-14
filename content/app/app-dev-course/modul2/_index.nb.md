@@ -355,9 +355,12 @@ bekrefte at riktige felter blir forhåndsutfylt.
 {{% markdown %}}
 [Kildekode modul 2](https://altinn.studio/repos/testdep/flyttemelding-sogndal/src/branch/modul2)<br>
 [(Kildekode tidligere versjon modul 2)](https://altinn.studio/repos/ttd/tilflytter-sogndal-lf/src/branch/bolk/2)<br>
-{{% /markdown %}}
 
-<h3>Legge til infoside</h3>
+### Legge til infoside
+
+![Skjermbilde av infoside. Bilde](screenshot-info-page-1.png "Infoside")
+
+{{% /markdown %}}
 
 {{<content-version-selector classes="thin-border">}}
 {{<content-version-container version-label="Kode">}}
@@ -365,9 +368,6 @@ bekrefte at riktige felter blir forhåndsutfylt.
 <br>
 
 #### Infoside oppsett
-
-Bildet det refereres til er lastet ned og lagret i mappen`/App/wwwroot` i appen (mappen `wwwroot` ble også opprettet).
- Et alternativ er å bruke en ekstern URL for bildet som kilde.
 
 Sidestilling av bilde og overskrift er gjort ved hjelp av `grid` (se markeringer).
 
@@ -490,30 +490,28 @@ I feltet "Legg til mappe" fyller du inn `/App/wwwroot`.
 ![Innstillinger for bilde. Skjermbilde](screenshot-image-settings-wwwroot.png "Innstillinger for bilde")
 
 
-#### Overskrift
+#### Tekst
 
-Overskriften er lagt til som "Tekst" > "Paragraf" og formatert med markdown.
+Både overskrift og beskrivelse er lagt til som "Paragraf" (underkategori av "Tekst") og formatert med markdown.
 
 ![Innstillinger for overskrift](screenshot-heading-settings.png "Innstillinger for overskrift")
 
-#### Beskrivelse
-
-Beskrivelsen er lagt til som "Tekst" > "Paragraf" og formatert med markdown.
-
 ![Innstillinger for beskrivelse. Bilde](screenshot-description-settings.png "Innstillinger for beskrivelse")
 
-{{</content-version-container>}}
-{{<content-version-container version-label="Resultat">}}
-
-![Skjermbilde av infoside. Bilde](screenshot-info-page-1.png "Infoside")
-
-![]()
 {{</content-version-container>}}
 {{</content-version-selector>}}
 
 {{% gray-divider-line %}}
 
 <h3>Alternativ arbeidsflyt</h3>
+
+{{% markdown %}}
+![Skjermbilde av oppdatert infoside. Bilde](infoside-screenshot.png "Oppdatert infoside")
+
+![Skjermbilde av alternativ arbeidsflyt: dette skjemaet er ikke for deg](side-ikke-for-deg-screenshot.png "Ny side: Dette skjemaet er ikke for deg")
+
+{{% /markdown %}}
+
 {{<content-version-selector classes="thin-border">}}
 {{<content-version-container version-label="Kode">}}
 
@@ -694,8 +692,6 @@ Det er lagt til en komponent for radioknapper på info-siden hvor brukeren skal 
 
 ![Komponenter på info-side. Bilde](screenshot-info-page-layout-2.png "Komponenter på info-siden")
 
-
-
 ![Radioknapper innstillinger. Bilde](screenshot-radio-buttons-settings.png "Innstillinger for radioknapper")
 
 ![]()
@@ -709,31 +705,21 @@ Ny side for *Spor 1*.
 ![Tekst innstillinger. Bilde](screenshot-ikke-for-deg-tekst.png "Innstillinger for tekst")
 
 {{</content-version-container>}}
-{{<content-version-container version-label="Resultat">}}
-
-![Skjermbilde av oppdatert infoside. Bilde](infoside-screenshot.png "Oppdatert infoside")
-
-![Skjermbilde av alternativ arbeidsflyt: dette skjemaet er ikke for deg](side-ikke-for-deg-screenshot.png "Ny side: Dette skjemaet er ikke for deg")
-
-
-{{</content-version-container>}}
 {{</content-version-selector>}}
 
 {{% gray-divider-line %}}
 
 <h3>Forhåndsutfylling</h3>
+
+{{% markdown %}}
+![Skjermbilde av forhåndsutfylt dataside](/app/app-dev-course/modul2/prefilled-data-screenshot.png "Oppdatert dataside med forhåndsutfylling")
+{{% /markdown %}}
+
 {{<content-version-selector classes="thin-border">}}
 {{<content-version-container version-label="Kode">}}
 
 {{</content-version-container>}}
 {{<content-version-container version-label="Altinn Studio Designer">}}
-{{</content-version-container>}}
-{{<content-version-container version-label="Resultat">}}
-
-![Skjermbilde av forhåndsutfylt dataside](/app/app-dev-course/modul2/prefilled-data-screenshot.png "Oppdatert dataside med forhåndsutfylling")
-
-![]()
-
 {{</content-version-container>}}
 {{</content-version-selector>}}
 
